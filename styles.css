@@ -1,0 +1,255 @@
+:root{
+  --ink:#1A1A1A;
+  --paper:#F5F0E8;
+  --champagne:#C9A96E;
+  --champagne-light:#d0b77f;
+  --serif: 'Perpetua', Georgia, serif;
+  --sans:'Poppins',Arial,sans-serif;
+  --ease:cubic-bezier(.23,1,.32,1)
+}
+
+*{
+  box-sizing:border-box
+}
+  
+html{
+  scroll-behavior:smooth
+}
+
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--sans);
+  font-size:14px
+}
+
+a{
+  color:inherit;
+  text-decoration:none
+}
+
+button,input{
+  font:inherit
+}
+
+button{
+  border:0;
+  cursor:pointer
+}
+
+.homepage{
+  overflow:hidden;
+  background:var(--ink)
+}
+
+.homepage-header{
+  height:76px;
+  padding:0 clamp(24px,5vw,74px);
+  display:flex;
+  align-items:center;
+  gap:clamp(24px,5vw,72px);
+  border-bottom:1px solid #f4ece314;
+  position:relative;
+  z-index:5
+}
+
+.homepage-header img{
+  width: 80px;
+  height: 35px;
+  object-fit: cover;
+  margin-right: 52px;
+}
+
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:clamp(17px,2.5vw,38px);
+  margin:auto;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: var(--paper)
+}
+
+.main-nav a{
+  padding:30px 0;
+  position:relative;
+  transition:color .2s
+}
+
+.main-nav a:hover,.main-nav .active{color:#fff}.main-nav .active:after{
+  content:"";
+  height:1px;
+  width:100%;
+  position:absolute;
+  left:0;
+  bottom:23px;
+  background:var(--champagne)
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:16px
+}
+
+.login-button,.button{
+  border-radius:999px;
+  padding:10px 17px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:10px;
+  transition:transform .16s var(--ease),background .2s,color .2s
+}
+
+.login-button{
+  background:var(--champagne);
+  color:var(--ink)
+}
+
+.login-button:hover,.button-champagne:hover{
+  background:var(--champagne-light)
+}
+
+.hero{
+  min-height:520px;
+  display:grid;
+  grid-template-columns:58% 42%;
+  align-items:center;
+  padding:28px clamp(24px,8vw,120px) 36px clamp(24px,9vw,138px);
+  position:relative 
+}
+
+.hero-text{
+  position:relative;
+  z-index:1;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.hero h1{
+  font:500 clamp(64px,8.4vw,124px)/.78 var(--serif);
+  letter-spacing:-.045em;
+  line-height: 0.85;
+  margin:0 0 28px
+}
+
+.hero h1 em{
+  color:var(--champagne-light);
+  font-weight:500
+}
+
+.button{
+  display:inline-flex;
+  align-items:center;
+  gap:10px
+}
+
+.button-champagne{
+  background:var(--champagne);
+  color:var(--paper)
+}
+
+.button-dark{
+  background:var(--ink);
+  color:var(--paper)
+}
+
+.button-outline{
+  border:1px solid var(--champagne);
+  color:var(--paper);
+  background:transparent
+}
+
+.button-outline:hover{
+  background:var(--champagne);
+  color:var(--ink)
+}
+
+button:active,.button:active{
+  transform:scale(.97)
+}
+
+.hero-art{
+  height:410px;
+  position:relative;
+  display:block;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.hero-art .image-1{
+  position: absolute;
+  left: -45%;
+  bottom: -70;
+  width: 800px;
+  height: 500px;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.hero-art .image-2{
+  position: absolute;
+  left: 24%;
+  bottom: 15;
+  width: 380px;
+  height: 400px;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.image-placeholder {
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+
+
+.trust-strip{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin:0 clamp(24px,7vw,104px);
+  padding:23px 0
+}
+
+.trust-item{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center
+}
+
+.trust-icon {
+  background:var(--champagne);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.trust-icon img {
+  width: 24px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.trust-item strong,.trust-item small{
+  display:block
+}
+
+.trust-item strong{
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase
+}
+
+.trust-item small{
+  font-size:9px;
+  color:var(--paper);
+  margin-top:4px
+}
