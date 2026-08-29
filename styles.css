@@ -108,7 +108,7 @@ button{
   color:var(--ink)
 }
 
-.login-button:hover,.button-champagne:hover{
+.login-button:hover,.button-champagne:hover, .circle-link:hover{
   background:var(--champagne-light)
 }
 
@@ -156,6 +156,11 @@ button{
   color:var(--paper)
 }
 
+.button-dark:hover{
+  background:var(--paper);
+  color:var(--ink)
+}
+
 .button-outline{
   border:1px solid var(--champagne);
   color:var(--paper);
@@ -167,7 +172,7 @@ button{
   color:var(--ink)
 }
 
-button:active,.button:active{
+button:active,.button:active, .circle-link:active{
   transform:scale(.97)
 }
 
@@ -252,4 +257,196 @@ button:active,.button:active{
   font-size:9px;
   color:var(--paper);
   margin-top:4px
+}
+
+.loyalty-section{
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:9vw;
+  align-items:center;
+  padding:62px clamp(24px,9vw,138px)
+}
+
+.loyalty-card{
+  background-color:var(--champagne);
+  color:var(--paper);
+  padding:29px 24px;
+  border-radius:20px;
+  min-height:180px;
+  box-shadow:inset 0 0 0 1px #fff2,0 14px 30px #0002
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.17em;
+  font-size:10px;
+  color:var(--paper);
+  margin:0 0 18px
+}
+
+.loyalty-card .eyebrow{
+  color:var(--paper)
+}
+
+.loyalty-card h2{
+  font:500 25px/1 var(--serif);
+  margin:0 0 14px
+}
+
+.loyalty-card>p:not(.eyebrow){
+  font-size:10px;
+  color:var(--paper);
+  margin:0 0 15px
+}
+
+.perks{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  align-items: start;
+}
+
+.perk{
+  text-align:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perk-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  background:var(--champagne);
+}
+
+.perk-icon img, .circle-link img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.perk strong,.perk small{
+  display:block
+}
+
+.perk strong{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em
+}
+
+.perk small{
+  font-size:9px;
+  line-height:1.4;
+  color:var(--paper);
+  max-width:120px;
+  margin:5px auto 0
+}
+
+.catalog-section{
+  padding:20px clamp(24px,7vw,104px) 76px
+}
+
+.section-heading{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  margin-bottom:17px
+}
+
+.section-heading div {
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.section-heading h2{
+  font:200 35px/1 var(--serif);
+  margin:0;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.circle-link{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:38px;
+  width:38px;
+  place-items:center;
+  border-radius:50%;
+  background-color: var(--champagne);
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:11px
+}
+
+.product-card{
+  background:var(--paper);
+  border-radius:15px;
+  overflow:hidden;
+  color:var(--ink);
+  transition:transform .24s var(--ease),box-shadow .24s
+}
+
+.product-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 16px 30px #0005
+}
+
+.product-card .image-placeholder{
+  height:202px;
+  border:0;
+  border-radius:0;
+  color:var(--ink)
+}
+
+.image-placeholder img {
+  width: 355px;
+  height: 240px;
+  object-fit: cover;
+}
+
+.product-info{
+  padding:11px 13px 10px;
+  text-align:center
+}
+
+.product-info h3{
+  font:500 15px var(--serif);
+  color: var(--champagne);
+  text-transform:uppercase;
+  letter-spacing:.1em;margin:0 0 1px
+}
+
+.product-info strong{
+  font-size:10px;
+  color:var(--ink)
+}
+
+.add-button{
+  display:block;
+  background:var(--champagne);
+  color:var(--ink);
+  border-radius:999px;
+  padding:6px 16px;
+  margin:8px auto 0;
+  width:80%;
+  font-size:9px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  transition:background .2s,color .2s
+}
+
+.add-button:hover{
+  background:var(--champagne-light);
+  color:var(--ink)
 }
