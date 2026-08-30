@@ -3,6 +3,7 @@
   --paper:#F5F0E8;
   --champagne:#C9A96E;
   --champagne-light:#d0b77f;
+  --line:#3d3934;
   --serif: 'Perpetua', Georgia, serif;
   --sans:'Poppins',Arial,sans-serif;
   --ease:cubic-bezier(.23,1,.32,1)
@@ -168,8 +169,7 @@ button{
 }
 
 .button-outline:hover{
-  background:var(--champagne);
-  color:var(--ink)
+  background:var(--champagne)
 }
 
 button:active,.button:active, .circle-link:active{
@@ -450,3 +450,160 @@ button:active,.button:active, .circle-link:active{
   background:var(--champagne-light);
   color:var(--ink)
 }
+
+.offers-section{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  align-items:center;
+  background:#211f1d;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:48px clamp(24px,9vw,138px);
+  gap:25px
+}
+
+.offers-section article{
+  padding:0 15px
+}
+
+.offers-section h2{
+  font:500 25px/.93 var(--serif);
+  margin:0 0 19px;
+  line-height: 0.99;
+}
+
+.offers-section .eyebrow, .campaign-section .eyebrow, .about-copy .eyebrow{
+  color: var(--champagne);
+}
+
+.offers-section .image-placeholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offers-section .image-placeholder img{
+  height:250px;
+  border-radius:15px;
+  width: 500px;
+  object-fit: cover;
+}
+
+.offers-section .button-champagne:hover{
+  background:var(--ink);
+  color:var(--paper);
+  border:1px solid var(--champagne);
+}
+
+.campaign-section{
+  height:250px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content:flex-end;
+  align-items:center;
+  padding:34px 13%;
+  background-color: var(--ink);
+  background: url("images/background\ img/collection-sale.jpg") center center / cover no-repeat;
+}
+
+.campaign-section .image-placeholder img{
+  height: 300px;
+  border-radius:15px;
+  width: 500px;
+  object-fit: contain;
+  margin-bottom: -20px;
+}
+
+.campaign-copy{
+  position:relative;
+  text-align:right;
+}
+
+.campaign-copy h2{
+  font:500 48px/.82 var(--serif);
+  margin:0 0 9px
+}
+
+.campaign-copy p:not(.eyebrow){
+  font-size:9px;
+  color:var(--paper);
+  margin:0 0 17px
+}
+
+.about-section{
+  display:grid;
+  grid-template-columns:1.2fr .9fr 1fr;
+  align-items:center;
+  gap:50px;
+  padding:66px clamp(24px,8vw,120px)
+}
+
+.about-section>.image-placeholder img{
+  height:230px;
+  border-radius:18px
+}
+
+
+.about-copy h2{
+  font:500 38px/1 var(--serif);
+  margin:0 0 15px
+}
+
+.about-copy>p:not(.eyebrow){
+  font-size:12px;
+  line-height:1.7;
+  color:var(--paper);
+  margin:0 0 20px
+}
+
+.subscribe-card{
+  background:var(--paper);
+  color:var(--ink);
+  border-radius:17px;
+  padding:27px 23px;
+  text-align:center;
+}
+
+.subscribe-card .image-placeholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscribe-card img {
+  width: 80px;
+  height: 35px;
+  object-fit: cover;
+}
+
+.subscribe-card h4{
+  font:500 12px/1.05 var(--serif);
+  margin:8px 0 16px
+}
+
+.subscribe-form{
+  display:flex;
+  flex-direction:column;
+  gap:8px
+}
+
+.subscribe-card input,.footer-signup input{
+  border:1px solid #cfc3b7;
+  border-radius:999px;
+  padding:8px 14px;
+  font-size:9px;
+  outline:none;
+  background:transparent;
+}
+
+.subscribe-card button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-message{
+  font-size:10px;color:#84704c;
+  line-height:1.5
+}
+
