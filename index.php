@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ember — Find Your Warmth</title>
+  <title>Ember</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
@@ -19,10 +19,10 @@
 
         <nav class="main-nav">
           <a class="active" href="#top">Home</a>
-          <a href="./pages/shop.html">Shop</a>
-          <a href="./pages/best-sellers.html">Best Sellers</a>
-          <a href="./pages/about.html">About</a>
-          <a href="./pages/contact.html">Contact</a>
+          <a href="./pages/shop.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Shop</a>
+          <a href="./pages/best-sellers.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Best Sellers</a>
+          <a href="./pages/about.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>About</a>
+          <a href="./pages/contact.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Contact</a>
         </nav>
 
         <div class="header-actions">
@@ -44,7 +44,7 @@
       <section class="hero">
         <div class="hero-text">
           <h1>Find<br />Your <em>Warmth</em></h1>
-          <a class="button button-champagne" href="#bestsellers">Shop now</a>
+          <a class="button button-champagne" href="#bestsellers" <?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Shop now</a>
         </div>
 
         <div class="hero-art">
@@ -93,7 +93,7 @@
         </h2>
         <p>Earn points on every order and unlock exclusive perks.
         </p>
-        <button class="button button-dark">
+        <button class="button button-dark" <?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
           Join now
         </button>
       </div>
@@ -210,7 +210,7 @@
       <article>
         <p class="eyebrow">Exclusive offer</p>
         <h2>Get 15% Off<br />Your First Order</h2>
-        <button class="button button-champagne">
+        <button class="button button-champagne"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
           shop now
         </button>
       </article>
@@ -222,7 +222,7 @@
       <article>
         <p class="eyebrow">limited edition</p>
         <h2>Luxury Collection<br />Just For You</h2>
-        <button class="button button-outline">
+        <button class="button button-outline"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
           discover now
         </button>
       </article>
@@ -241,7 +241,7 @@
         <p class="eyebrow">Find your scent</p>
         <h2>Collection<br /><em>Sale 15% Off</em></h2>
         <p>Start from Dec 25 to Dec 27</p>
-        <a class="button button-outline" href="#bestsellers">Shop now</a>
+        <a class="button button-outline" href="#bestsellers"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Shop now</a>
       </div>
     </section>
 
@@ -255,7 +255,7 @@
         <h2>Warmth, bottled.</h2>
         <p>Ember is a unique fragrance house built on warmth, authenticity, and timeless elegance. We create scents that speak without words designed for those who move through life with quiet confidence.
         </p>
-        <a class="button button-outline" href="#contact">Discover our story </a>
+        <a class="button button-outline" href="#contact"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Discover our story </a>
       </div>
       
       <div class="subscribe-card">
@@ -267,7 +267,7 @@
         <form class="subscribe-form">         
         <input type="email" placeholder="Your email here" required />
         
-        <button class="button button-champagne" type="submit">Submit</button>
+        <button class="button button-champagne" type="submit"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Submit</button>
         </form>
 
         <p class="success-message" hidden>You're on the list. Keep an eye on your inbox.</p>
@@ -288,7 +288,7 @@
           </div>
           
           <div>
-            <div class="profile">
+            <div class="testimonial-profile">
               <img src="./images/profiles/IMG_20251002_214606_012.jpg" alt="">
               <small>Lee Jasmin</small>
             </div>
@@ -303,7 +303,7 @@
           </div>
           
           <div>
-             <div class="profile">
+             <div class="testimonial-profile">
               <img src="./images/profiles/Jennie Fan Club - 3_100.jpg" alt="">
               <small>Kim Jennie</small>
             </div>
@@ -334,7 +334,7 @@
           <form class="subscribe-form">
             <input type="email" placeholder="Your email here" required />
             
-            <button class="button button-champagne" type="submit">Submit
+            <button class="button button-champagne" type="submit"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Submit
             </button>
           </form>
         

@@ -39,20 +39,22 @@ button{
   cursor:pointer
 }
 
-.homepage{
-  overflow:hidden;
-  background:var(--ink)
+.homepage {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--ink);
 }
 
-.homepage-header{
-  height:76px;
-  padding:0 clamp(24px,5vw,74px);
-  display:flex;
-  align-items:center;
-  gap:clamp(24px,5vw,72px);
-  border-bottom:1px solid #f4ece314;
-  position:relative;
-  z-index:5
+.homepage-header {
+  height: 76px;
+  padding: 0 clamp(24px, 5vw, 74px);
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+  border-bottom: 1px solid #f4ece314;
+  position: relative;
+  z-index: 5;
 }
 
 .homepage-header img{
@@ -62,37 +64,62 @@ button{
   margin-right: 52px;
 }
 
-.main-nav{
-  display:flex;
-  align-items:center;
-  gap:clamp(17px,2.5vw,38px);
-  margin:auto;
-  font-size:10px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color: var(--paper)
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(17px, 2.5vw, 38px);
+  margin: auto;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper);
 }
 
-.main-nav a{
-  padding:30px 0;
-  position:relative;
-  transition:color .2s
+.main-nav a {
+  padding: 30px 0;
+  position: relative;
+  transition: color 0.2s;
 }
 
-.main-nav a:hover,.main-nav .active{color:#fff}.main-nav .active:after{
-  content:"";
-  height:1px;
-  width:100%;
-  position:absolute;
-  left:0;
-  bottom:23px;
-  background:var(--champagne)
+.main-nav a:hover,
+.main-nav .active {
+  color: #fff;
 }
 
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap:16px
+.main-nav .active::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 23px;
+  background: var(--champagne);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cart img {
+  width: 100%;
+  height: 25px;
+  object-fit: contain;
+}
+
+.homepage .profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile img{
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 50%;
+  border:1px solid var(--champagne);
 }
 
 .login-button,.button{
@@ -645,14 +672,14 @@ button:active,.button:active, .circle-link:active{
   margin:0 0 12px
 }
 
-.profile {
+.testimonial-profile {
   display: flex;
   align-items: center;
   justify-content: start;
   margin-bottom: 18px;
 }
 
-.profile img{
+.testimonial-profile img{
   width: 35px;
   height: 35px;
   object-fit: cover;
