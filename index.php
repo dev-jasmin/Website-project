@@ -1,19 +1,22 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Ember — Find Your Warmth</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./styles/home.css">
+  <link rel="stylesheet" href="./styles/index.css">
+  <link rel="stylesheet" href="./styles/auth.css">
+  <link rel="stylesheet" href="./styles/auth-modal.css">
 </head>
 <body>
     <main class="homepage">
       <header class="homepage-header">
         <img src="images/logo/logo-cream white.png" alt="">
-        
+
         <nav class="main-nav">
           <a class="active" href="#top">Home</a>
           <a href="./pages/shop.html">Shop</a>
@@ -23,11 +26,18 @@
         </nav>
 
         <div class="header-actions">
-          <a href="./pages/auth.html">
-            <button class="login-button">
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <a class="cart" href="./pages/cart.php">
+              <img src="images/icon/cart.png" alt="">
+            </a>
+            <a class="profile" href="./pages/profile.php">
+              <img src="images/profiles/default-profile.jpg" alt="">
+            </a>
+          <?php else: ?>
+            <button class="login-button" type="button" data-open-auth="login">
               Login / Register
             </button>
-          </a>
+          <?php endif; ?>
         </div>
       </header>
 
@@ -135,7 +145,7 @@
           <div class="product-info">
             <h3>Auburn</h3>
             <strong>&#8369;199</strong>
-            <button class="add-button">Add to cart</button>
+            <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
           </div>
         </article>
 
@@ -146,7 +156,7 @@
           <div class="product-info">
             <h3>Shade</h3>
             <strong>&#8369;299</strong>
-          <button class="add-button">Add to cart</button>
+          <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
           </div>
         </article>
 
@@ -157,7 +167,7 @@
         <div class="product-info">
           <h3>Bloom</h3>
           <strong>&#8369;345</strong>
-        <button class="add-button">Add to cart</button>
+        <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
         </div>
       </article>
       
@@ -168,7 +178,7 @@
           <div class="product-info">
             <h3>Pablo Santo</h3>
             <strong>&#8369;299</strong>
-          <button class="add-button">Add to cart</button>
+          <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
           </div>
         </article>
         
@@ -179,7 +189,7 @@
           <div class="product-info">
           <h3>Coasta Mist</h3>
           <strong>&#8369;345</strong>
-          <button class="add-button">Add to cart</button>
+          <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
           </div>
         </article>
         
@@ -190,7 +200,7 @@
           <div class="product-info">
             <h3>Fleur de Peau</h3>
             <strong>&#8369;399</strong>
-            <button class="add-button">Add to cart</button>
+            <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
           </div>
         </article>
       </div>
@@ -224,7 +234,7 @@
 
     <section class="campaign-section">
       <div class="image-placeholder">
-        <img src="/images/products/group-products.png" alt="">
+        <img src="images/products/group-products.png" alt="">
       </div>
 
       <div class="campaign-copy">
@@ -279,7 +289,7 @@
           
           <div>
             <div class="profile">
-              <img src="/images/profiles/IMG_20251002_214606_012.jpg" alt="">
+              <img src="./images/profiles/IMG_20251002_214606_012.jpg" alt="">
               <small>Lee Jasmin</small>
             </div>
             
@@ -294,7 +304,7 @@
           
           <div>
              <div class="profile">
-              <img src="/images/profiles/Jennie Fan Club - 3_100.jpg" alt="">
+              <img src="./images/profiles/Jennie Fan Club - 3_100.jpg" alt="">
               <small>Kim Jennie</small>
             </div>
             
@@ -348,5 +358,8 @@
       <p class="copyright">Copyright © 2026 Ember. All rights reserved.</p>
     </footer>
   </main>
+
+  <?php require __DIR__ . '/includes/auth-modal.php'; ?>
+  <script src="scripts/auth-modal.js"></script>
 </body>
 </html>

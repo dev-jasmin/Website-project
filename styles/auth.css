@@ -35,7 +35,7 @@ a{
 
 .auth-card{
   width:min(100%,430px);
-  min-height:650px;
+  min-height:500px;
   padding:42px clamp(28px,7vw,50px) 30px;
   border:1px solid #b69a6126;
   border-radius:28px;

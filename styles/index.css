@@ -497,7 +497,10 @@ button:active,.button:active, .circle-link:active{
   align-items:center;
   padding:34px 13%;
   background-color: var(--ink);
-  background: url("/images/background\ img/collection-sale.jpg") center center / cover no-repeat;
+  background-image: url("../images/background%20img/collection-sale.jpg?v=2");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .campaign-section .image-placeholder img{

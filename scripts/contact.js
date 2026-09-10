@@ -4,18 +4,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("#contact-form");
   const status = document.querySelector("#form-status");
 
-  menuToggle.addEventListener("click", () => {
-    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", String(!isOpen));
-    siteNav.classList.toggle("is-open", !isOpen);
-  });
-
-  siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menuToggle.setAttribute("aria-expanded", "false");
-      siteNav.classList.remove("is-open");
+  if (menuToggle && siteNav) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      siteNav.classList.toggle("is-open", !isOpen);
     });
-  });
+
+    siteNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle.setAttribute("aria-expanded", "false");
+        siteNav.classList.remove("is-open");
+      });
+    });
+  }
 
   const setError = (field, message) => {
     const wrapper = field.closest(".form-field");
