@@ -22,8 +22,9 @@
       </nav>
 
       <div class="header-actions">
-        <a class="cart" href="#">
-            <img src="../images/icon/cart.png" alt="">
+        <a class="cart" href="./cart/cart.php">
+          <img src="../images/icon/cart.png" alt="">
+          <span class="cart-count" id="cartCount" hidden>0</span>
         </a>
 
         <a class="profile" href="#">
@@ -218,5 +219,6 @@
     </footer>
 
     <script src="../scripts/contact.js"></script>
+    <script src="../scripts/cart.js"></script>
   </body>
 </html>

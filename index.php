@@ -34,9 +34,11 @@ $topSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY to
 
         <div class="header-actions">
           <?php if (isset($_SESSION['user_id'])): ?>
-            <a class="cart" href="./pages/cart.php">
+            <a class="cart" href="./pages/cart/cart.php">
               <img src="images/icon/cart.png" alt="">
+              <span class="cart-count" id="cartCount" hidden>0</span>
             </a>
+
             <a class="profile" href="./pages/profile.php">
               <img src="images/profiles/default-profile.jpg" alt="">
             </a>
@@ -336,5 +338,6 @@ $topSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY to
   <?php require __DIR__ . '/includes/auth-modal.php'; ?>
   <script src="scripts/auth-modal.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/cart.js"></script>
 </body>
 </html>

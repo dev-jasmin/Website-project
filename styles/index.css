@@ -108,6 +108,28 @@ button{
   object-fit: contain;
 }
 
+.cart {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: 15px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--champagne);
+  color: var(--ink);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .homepage .profile {
   display: flex;
   align-items: center;

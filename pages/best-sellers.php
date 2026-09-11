@@ -1,4 +1,3 @@
-php
 <?php
 require __DIR__ . '/../database/config.php';
 $pdo = getConnection();
@@ -29,8 +28,9 @@ $bestSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY t
       </nav>
 
       <div class="header-actions">
-        <a class="cart" href="#">
-            <img src="../images/icon/cart.png" alt="">
+        <a class="cart" href="./cart/cart.php">
+          <img src="../images/icon/cart.png" alt="">
+          <span class="cart-count" id="cartCount" hidden>0</span>
         </a>
 
         <a class="profile" href="#">
@@ -112,6 +112,7 @@ $bestSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY t
       <p class="copyright">Copyright © 2026 Ember. All rights reserved.</p>
     </footer>
   </div>
-  <script src="../scripts/best-sellers.js"></script>
+  <script src="../scripts/best"></script>
+  <script src="../scripts/cart.js"></script>
 </body>
 </html>

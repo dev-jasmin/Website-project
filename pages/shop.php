@@ -27,8 +27,9 @@ $products = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY id')
       </nav>
 
       <div class="header-actions">
-        <a class="cart" href="#">
-            <img src="../images/icon/cart.png" alt="">
+        <a class="cart" href="./cart/cart.php">
+          <img src="../images/icon/cart.png" alt="">
+          <span class="cart-count" id="cartCount" hidden>0</span>
         </a>
 
         <a class="profile" href="#">
@@ -124,5 +125,6 @@ $products = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY id')
 
     </div>
   <script src="../scripts/shop.js"></script>
+  <script src="../scripts/cart.js"></script>
 </body>
 </html>
