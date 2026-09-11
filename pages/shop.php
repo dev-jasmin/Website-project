@@ -1,3 +1,9 @@
+<?php
+require __DIR__ . '/../database/config.php';
+$pdo = getConnection();
+$products = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY id')->fetchAll();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -55,128 +61,19 @@
       </div>
     </div>
 
-    <div class="product-grid">
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/7.png" alt="">
-          </div>
-          
-          <div class="product-info">
-            <h3>Auburn</h3>
-            <strong>&#8369;199</strong>
-            <button class="add-button">Add to cart</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/9.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Shade</h3>
-            <strong>&#8369;299</strong>
-          <button class="add-button">Add to cart</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-        <div class="image-placeholder">
-            <img src="../images/products/6.png" alt="">
-        </div>
-        <div class="product-info">
-          <h3>Bloom</h3>
-          <strong>&#8369;345</strong>
-        <button class="add-button">Add to cart</button>
-        </div>
-      </article>
-      
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/8.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Pablo Santo</h3>
-            <strong>&#8369;299</strong>
-          <button class="add-button">Add to cart</button>
-          </div>
-        </article>
-        
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/10.png" alt="">
-          </div>
-          <div class="product-info">
-          <h3>Coasta Mist</h3>
-          <strong>&#8369;345</strong>
-          <button class="add-button">Add to cart</button>
-          </div>
-        </article>
-        
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/1.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Fleur de Peau</h3>
-            <strong>&#8369;399</strong>
-            <button class="add-button">Add to cart</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/5.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Aurea</h3>
-            <strong>&#8369;299</strong>
-            <button class="add-button">Add to cart</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/2.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Sandalwood</h3>
-            <strong>&#8369;345</strong>
-            <button class="add-button">Add to cart</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/3.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Ash</h3>
-            <strong>&#8369;199</strong>
-            <button class="add-button">Add to cart</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/4.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Cinder</h3>
-            <strong>&#8369;299</strong>
-            <button class="add-button">Add to cart</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="../images/products/11.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Violette 30</h3>
-            <strong>&#8369;399</strong>
-            <button class="add-button">Add to cart</button>
-          </div>
-        </article>
+      <div class="product-grid">
+        <?php foreach ($products as $product): ?>
+          <article class="product-card" data-id="<?= $product['id'] ?>" data-category="<?= htmlspecialchars($product['category']) ?>">
+            <div class="image-placeholder">
+              <img src="../<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+            </div>
+            <div class="product-info">
+              <h3><?= htmlspecialchars($product['name']) ?></h3>
+              <strong>&#8369;<?= number_format($product['price']) ?></strong>
+              <button class="add-button" data-id="<?= $product['id'] ?>">Add to cart</button>
+            </div>
+          </article>
+        <?php endforeach; ?>
       </div>
   </section>
 </main>
