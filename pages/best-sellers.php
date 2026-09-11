@@ -1,3 +1,10 @@
+php
+<?php
+require __DIR__ . '/../database/config.php';
+$pdo = getConnection();
+$bestSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY total_orders DESC, id ASC LIMIT 10')->fetchAll();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -42,148 +49,22 @@
         </div>
        
         <div class="product-grid">
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">01</div>
+          <?php foreach ($bestSellers as $index => $product): ?>
+            <article class="product-card bestseller-card">
+              <div class="rank-badge"><?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?></div>
 
-            <div class="image-placeholder">
-              <img src="../images/products/10.png" alt="">
-            </div>
-            <div class="product-info">
-            <h3>Coasta Mist</h3>
-            <strong>&#8369;345</strong>
-            <p class="orders">1,248 orders</p>
-            <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">02</div>
-
-            <div class="image-placeholder">
-              <img src="../images/products/5.png" alt="">
-            </div>
-            <div class="product-info">
-              <h3>Aurea</h3>
-              <strong>&#8369;299</strong>
-              <p class="orders">1,105 orders</p>
-              <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">03</div>
-
-            <div class="image-placeholder">
-              <img src="../images/products/1.png" alt="">
-            </div>
-            <div class="product-info">
-              <h3>Fleur de Peau</h3>
-              <strong>&#8369;399</strong>
-              <p class="orders">972 orders</p>
-              <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">04</div>
-
-            <div class="image-placeholder">
-              <img src="../images/products/11.png" alt="">
-            </div>
-            <div class="product-info">
-              <h3>Violette 30</h3>
-              <strong>&#8369;399</strong>
-              <p class="orders">884 orders</p>
-              <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">05</div>
-            
-            <div class="image-placeholder">
-                <img src="../images/products/6.png" alt="">
-            </div>
-            <div class="product-info">
-              <h3>Bloom</h3>
-              <strong>&#8369;345</strong>
-              <p class="orders">811 orders</p>
-            <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">06</div>
-
-            <div class="image-placeholder">
-              <img src="../images/products/9.png" alt="">
-            </div>
-            <div class="product-info">
-              <h3>Shade</h3>
-              <strong>&#8369;299</strong>
-              <p class="orders">746 orders</p>
-            <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">07</div>
-
-            <div class="image-placeholder bestseller-card">
-              <img src="../images/products/2.png" alt="">
-            </div>
-            <div class="product-info">
-              <h3>Sandalwood</h3>
-              <strong>&#8369;345</strong>
-              <p class="orders">689 orders</p>
-              <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-
-      
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">08</div>
-
-            <div class="image-placeholder">
-              <img src="../images/products/8.png" alt="">
-            </div>
-            <div class="product-info">
-              <h3>Pablo Santo</h3>
-              <strong>&#8369;299</strong>
-              <p class="orders">602 orders</p>
-            <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">09</div>
-
-            <div class="image-placeholder">
-              <img src="../images/products/7.png" alt="">
-            </div>
-            
-            <div class="product-info">
-              <h3>Auburn</h3>
-              <strong>&#8369;199</strong>
-              <p class="orders">544 orders</p>
-              <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-
-          <article class="product-card bestseller-card">
-            <div class="rank-badge">10</div>
-
-            <div class="image-placeholder">
-              <img src="../images/products/4.png" alt="">
-            </div>
-            <div class="product-info">
-              <h3>Cinder</h3>
-              <strong>&#8369;299</strong>
-              <p class="orders">487 orders</p>
-              <button class="add-button">Add to cart</button>
-            </div>
-          </article>
-        </div>               
+              <div class="image-placeholder">
+                <img src="../<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+              </div>
+              <div class="product-info">
+                <h3><?= htmlspecialchars($product['name']) ?></h3>
+                <strong>&#8369;<?= number_format($product['price']) ?></strong>
+                <p class="orders"><?= number_format($product['total_orders']) ?> orders</p>
+                <button class="add-button" data-id="<?= $product['id'] ?>">Add to cart</button>
+              </div>
+            </article>
+          <?php endforeach; ?>
+        </div>              
     </section>
   </main>
 

@@ -459,6 +459,25 @@ button:active,.button:active, .circle-link:active{
   color:var(--ink)
 }
 
+.track-wrapper {
+  overflow: hidden;
+}
+
+.pages-track {
+  display: flex;
+  width: 200%;
+  transition: transform 0.5s var(--ease);
+}
+
+.pages-track .page {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.pages-track.is-shifted {
+  transform: translateX(-50%);
+}
+
 .add-button{
   display:block;
   background:var(--champagne);

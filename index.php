@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+
+require __DIR__ . '/database/config.php';
+$pdo = getConnection();
+$topSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY total_orders DESC, id ASC LIMIT 10')->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,86 +132,53 @@
       </div>
     </section>
 
-    <section class="catalog-section">
-      <div class="section-heading">
-        <div>
-          <h2>Top sellers</h2>
-        </div>
+    <section class="catalog-section" id="bestsellers">
+    <div class="section-heading">
+      <div>
+        <h2>Top sellers</h2>
+      </div>
 
-      <a class="circle-link" href="#bestsellers">
+      <a class="circle-link" id="topSellersNext" href="./pages/best-sellers.php" aria-label="See more best sellers">
         <img src="images/icon/arrow.png" alt="">
       </a>
-      </div>
-      
-      <div class="product-grid">
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="images/products/7.png" alt="">
-          </div>
-          
-          <div class="product-info">
-            <h3>Auburn</h3>
-            <strong>&#8369;199</strong>
-            <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
-          </div>
-        </article>
+    </div>
 
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="images/products/9.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Shade</h3>
-            <strong>&#8369;299</strong>
-          <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
-          </div>
-        </article>
+  <div class="track-wrapper">
+    <div class="pages-track" id="topSellersTrack">
 
-        <article class="product-card">
-        <div class="image-placeholder">
-            <img src="images/products/6.png" alt="">
-        </div>
-        <div class="product-info">
-          <h3>Bloom</h3>
-          <strong>&#8369;345</strong>
-        <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
-        </div>
-      </article>
-      
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="images/products/8.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Pablo Santo</h3>
-            <strong>&#8369;299</strong>
-          <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
-          </div>
-        </article>
-        
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="images/products/10.png" alt="">
-          </div>
-          <div class="product-info">
-          <h3>Coasta Mist</h3>
-          <strong>&#8369;345</strong>
-          <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
-          </div>
-        </article>
-        
-        <article class="product-card">
-          <div class="image-placeholder">
-            <img src="images/products/1.png" alt="">
-          </div>
-          <div class="product-info">
-            <h3>Fleur de Peau</h3>
-            <strong>&#8369;399</strong>
-            <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Add to cart</button>
-          </div>
-        </article>
+      <div class="product-grid page">
+        <?php foreach (array_slice($topSellers, 0, 6) as $product): ?>
+          <article class="product-card" data-id="<?= $product['id'] ?>">
+            <div class="image-placeholder">
+              <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+            </div>
+            <div class="product-info">
+              <h3><?= htmlspecialchars($product['name']) ?></h3>
+              <strong>&#8369;<?= number_format($product['price']) ?></strong>
+              <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?> data-id="<?= $product['id'] ?>">Add to cart</button>
+            </div>
+          </article>
+        <?php endforeach; ?>
       </div>
-    </section>
+
+      <div class="product-grid page">
+        <?php foreach (array_slice($topSellers, 6, 4) as $product): ?>
+          <article class="product-card" data-id="<?= $product['id'] ?>">
+            <div class="image-placeholder">
+              <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+            </div>
+            <div class="product-info">
+              <h3><?= htmlspecialchars($product['name']) ?></h3>
+              <strong>&#8369;<?= number_format($product['price']) ?></strong>
+              <button class="add-button"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?> data-id="<?= $product['id'] ?>">Add to cart</button>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <section class="offers-section">
       <article>
@@ -361,5 +335,6 @@
 
   <?php require __DIR__ . '/includes/auth-modal.php'; ?>
   <script src="scripts/auth-modal.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
