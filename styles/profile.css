@@ -1,0 +1,193 @@
+:root {
+  --ink:#1A1A1A;
+  --paper:#F5F0E8;
+  --champagne:#C9A96E;
+  --champagne-light:#d0b77f;
+  --serif: 'Perpetua', Georgia, serif;
+  --sans:'Poppins',Arial,sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+a { color: inherit; text-decoration: none; }
+button { border: 0; cursor: pointer; }
+
+.profile-header {
+  height: 76px;
+  padding: 0 clamp(24px, 5vw, 74px);
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+  border-bottom: 1px solid #f4ece314;
+}
+
+.logo-link img { width: 80px; height: 35px; object-fit: cover; }
+
+.main-nav {
+  display: flex;
+  gap: 24px;
+  margin-right: auto;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.logout-link {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.logout-link:hover { opacity: 1; color: var(--champagne); }
+
+.page-content { padding: 54px clamp(24px, 7vw, 104px) 84px; max-width: 1100px; margin: 0 auto; }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  font-size: 9px;
+  color: var(--champagne);
+  margin: 0 0 18px;
+}
+
+.page-content h2 { font: 500 42px/1 var(--serif); margin: 0 0 34px; text-transform: capitalize; }
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.profile-card,
+.order-history { background: #211f1d; border-radius: 16px; padding: 24px; }
+
+.profile-card h3,
+.order-history h3 { font: 500 18px var(--serif); margin: 0 0 20px; }
+
+.profile-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(245, 240, 232, 0.08);
+}
+
+.profile-detail:first-of-type { border-top: 0; padding-top: 0; }
+.profile-detail span { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; }
+.profile-detail strong { font-size: 13px; }
+
+.profile-avatar-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 20px;
+}
+
+.profile-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--champagne);
+}
+
+.avatar-edit-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--champagne);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  border: 2px solid var(--ink);
+}
+
+.avatar-edit-button:hover {
+  background: var(--champagne-light);
+}
+
+.empty-orders { text-align: center; padding: 30px 0; }
+.empty-orders p { margin-bottom: 16px; opacity: 0.75; }
+
+.button {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+}
+
+.button-champagne { background: var(--champagne); color: var(--ink); }
+.button-champagne:hover { background: var(--champagne-light); }
+
+.order-card {
+  background: rgba(245, 240, 232, 0.04);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.order-date { display: block; font-size: 10px; opacity: 0.55; margin-top: 2px; }
+
+.order-status {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(201, 169, 110, 0.15);
+  color: var(--champagne);
+}
+
+.status-delivered { background: rgba(120, 180, 130, 0.15); color: #86c690; }
+.status-cancelled { background: rgba(168, 70, 63, 0.15); color: #d98b83; }
+
+.order-items-preview { display: flex; gap: 8px; margin-bottom: 12px; }
+
+.order-item-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.order-item-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.order-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(245, 240, 232, 0.08);
+}
+
+.order-payment { opacity: 0.6; letter-spacing: 0.05em; }
+
+@media (max-width: 800px) {
+  .profile-layout { grid-template-columns: 1fr; }
+}

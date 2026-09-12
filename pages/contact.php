@@ -27,7 +27,7 @@
           <span class="cart-count" id="cartCount" hidden>0</span>
         </a>
 
-        <a class="profile" href="#">
+        <a class="profile" href="./pages/profile/profile.php">
           <img src="../images/profiles/default-profile.jpg" alt="">
         </a>
       </div>
