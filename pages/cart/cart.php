@@ -88,7 +88,7 @@ foreach ($items as $item) {
                 <strong>&#8369;<span id="cartSubtotal"><?= number_format($subtotal) ?></span></strong>
               </div>
               <p class="summary-note">Delivery fee and estimate calculated at checkout.</p>
-              <a class="button button-champagne checkout-button" href="../checkout.php">Proceed to checkout</a>
+              <a class="button button-champagne checkout-button" href="../checkout/checkout.php">Proceed to checkout</a>
             </div>
           </div>
         <?php endif; ?>

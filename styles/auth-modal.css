@@ -73,3 +73,19 @@
   text-align: center;
   margin: 0 0 14px;
 }
+
+.order-confirmation-card {
+  text-align: center;
+}
+
+.order-confirmation-card h2 {
+  font-size: 32px;
+  margin: 10px 0 18px;
+}
+
+.order-confirmation-message {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted, #a9a095);
+  margin: 0 0 24px;
+}

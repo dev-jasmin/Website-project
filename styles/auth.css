@@ -23,7 +23,6 @@ body{
   justify-content:center;
   min-height:100vh;
   padding:28px 18px;
-  background:radial-gradient(circle at 50% 0,#2b251f 0,transparent 35%),var(--ink);
   color:var(--paper);
   font-family:var(--sans)
 }
@@ -39,7 +38,6 @@ a{
   padding:42px clamp(28px,7vw,50px) 30px;
   border:1px solid #b69a6126;
   border-radius:28px;
-  background:linear-gradient(145deg,#201f1d,#151515);
   box-shadow:0 26px 70px #0007;
   display:flex;
   flex-direction:column
