@@ -158,9 +158,9 @@ if (isset($_SESSION['user_id'])) {
       <div class="product-grid page">
         <?php foreach (array_slice($topSellers, 0, 6) as $product): ?>
           <article class="product-card" data-id="<?= $product['id'] ?>">
-            <div class="image-placeholder">
+            <a class="image-placeholder" href="./pages/best-sellers.php">
               <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-            </div>
+            </a>
             <div class="product-info">
               <h3><?= htmlspecialchars($product['name']) ?></h3>
               <strong>&#8369;<?= number_format($product['price']) ?></strong>
@@ -173,9 +173,9 @@ if (isset($_SESSION['user_id'])) {
       <div class="product-grid page">
         <?php foreach (array_slice($topSellers, 6, 4) as $product): ?>
           <article class="product-card" data-id="<?= $product['id'] ?>">
-            <div class="image-placeholder">
+            <a class="image-placeholder" href="./pages/best-sellers.php">
               <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-            </div>
+            </a>
             <div class="product-info">
               <h3><?= htmlspecialchars($product['name']) ?></h3>
               <strong>&#8369;<?= number_format($product['price']) ?></strong>

@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     cartCountEl.textContent = count;
     cartCountEl.hidden = count === 0;
   }
+
+  window.updateCartBadge = setCartCount;
   
   const inPagesFolder = window.location.pathname.includes("/pages/");
   const cartBasePath = inPagesFolder ? "cart/" : "pages/cart/";

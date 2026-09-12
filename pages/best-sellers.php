@@ -20,6 +20,7 @@ if (isset($_SESSION['user_id'])) {
   <title>Best Sellers Ember</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="../styles/auth-modal.css" />
   <link rel="stylesheet" href="../styles/best-sellers.css" />
 </head>
 <body>
@@ -66,7 +67,7 @@ if (isset($_SESSION['user_id'])) {
             <article class="product-card bestseller-card">
               <div class="rank-badge"><?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?></div>
 
-              <div class="image-placeholder">
+              <div class="image-placeholder" data-open-product="<?= $product['id'] ?>">
                 <img src="../<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
               </div>
               <div class="product-info">
@@ -126,6 +127,9 @@ if (isset($_SESSION['user_id'])) {
     </footer>
   </div>
 
+  <?php require __DIR__ . '/../includes/product-modal.php'; ?>
+  <script>window.emberImageBasePath = "../";</script>
   <script src="../scripts/cart.js"></script>
+  <script src="../scripts/product-modal.js"></script>
 </body>
 </html>
