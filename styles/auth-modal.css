@@ -146,7 +146,7 @@
   margin: 0 0 20px;
 }
 
-.product-modal-add { 
+.product-modal-add, .auth-button { 
   width: 40%;
   background-color: #C9A96E;
   color: var(--ink);
@@ -156,6 +156,59 @@
 
 .product-modal-add:hover { 
   background-color: #d0b77f; 
+}
+
+.review-modal-card {
+  text-align: center;
+  background-color: #1A1A1A;
+  padding: 24px;
+  border-radius: 14px;
+}
+
+.review-modal-product-name {
+  font-size: 13px;
+  opacity: 0.75;
+  margin: 4px 0 20px;
+}
+
+.star-picker {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.star-pick {
+  background: none;
+  border: 0;
+  font-size: 28px;
+  color: rgba(245, 240, 232, 0.25);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.star-pick.is-selected {
+  color: var(--champagne);
+}
+
+#reviewComment {
+  width: 100%;
+  border: 1px solid rgba(245, 240, 232, 0.15);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(245, 240, 232, 0.05);
+  color: var(--paper);
+  font: inherit;
+  resize: vertical;
+  margin-bottom: 12px;
+}
+
+.review-status {
+  font-size: 11px;
+  color: var(--champagne);
+  min-height: 16px;
+  margin: 0 0 14px;
 }
 
 @media (max-width: 500px) {

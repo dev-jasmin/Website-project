@@ -28,13 +28,22 @@ $orders = $ordersStmt->fetchAll();
 $orderIds = array_column($orders, 'id');
 $itemsByOrder = [];
 
+$reviewStmt = $pdo->prepare('SELECT product_id, rating, comment FROM review WHERE user_id = :user_id');
+$reviewStmt->bindValue(':user_id', $_SESSION['user_id']);
+$reviewStmt->execute();
+
+$reviewsByProduct = [];
+foreach ($reviewStmt->fetchAll() as $row) {
+    $reviewsByProduct[$row['product_id']] = $row;
+}
+
 if (!empty($orderIds)) {
     $placeholders = implode(',', array_fill(0, count($orderIds), '?'));
     $itemsStmt = $pdo->prepare(
-        "SELECT oi.order_id, oi.quantity, p.name, p.image
-         FROM order_item oi
-         JOIN product p ON p.id = oi.product_id
-         WHERE oi.order_id IN ($placeholders)"
+      "SELECT oi.order_id, oi.quantity, p.id AS product_id, p.name, p.image
+      FROM order_item oi
+      JOIN product p ON p.id = oi.product_id
+      WHERE oi.order_id IN ($placeholders)"
     );
     $itemsStmt->execute($orderIds);
 
@@ -58,6 +67,8 @@ $statusLabels = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Profile Ember</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../styles/auth-modal.css" />
   <link rel="stylesheet" href="../../styles/profile.css" />
 </head>
 <body>
@@ -66,11 +77,7 @@ $statusLabels = [
       <a class="logo-link" href="/website/index.php">
         <img src="../../images/logo/logo-cream white.png" alt="Ember">
       </a>
-      <nav class="main-nav">
-        <a href="/website/index.php">Home</a>
-        <a href="../shop.php">Shop</a>
-        <a href="../best-sellers.php">Best Sellers</a>
-      </nav>
+
       <a class="logout-link" href="/website/logout/logout.php">Log out</a>
     </header>
 
@@ -132,8 +139,21 @@ $statusLabels = [
 
                   <div class="order-items-preview">
                     <?php foreach (($itemsByOrder[$order['id']] ?? []) as $item): ?>
-                      <div class="order-item-thumb" title="<?= htmlspecialchars($item['name']) ?> × <?= $item['quantity'] ?>">
-                        <img src="../../<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                      <?php $existingReview = $reviewsByProduct[$item['product_id']] ?? null; ?>
+                      <div class="order-item-row">
+                        <div class="order-item-thumb" title="<?= htmlspecialchars($item['name']) ?> × <?= $item['quantity'] ?>">
+                          <img src="../../<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                        </div>
+                        <span class="order-item-name"><?= htmlspecialchars($item['name']) ?></span>
+                        <button
+                          class="rate-button"
+                          data-product-id="<?= $item['product_id'] ?>"
+                          data-product-name="<?= htmlspecialchars($item['name']) ?>"
+                          data-existing-rating="<?= $existingReview['rating'] ?? 0 ?>"
+                          data-existing-comment="<?= htmlspecialchars($existingReview['comment'] ?? '') ?>"
+                        >
+                          <?= $existingReview ? 'Edit review (' . str_repeat('★', $existingReview['rating']) . str_repeat('☆', 5 - $existingReview['rating']) . ')' : 'Rate this product' ?>
+                        </button>
                       </div>
                     <?php endforeach; ?>
                   </div>
@@ -151,6 +171,8 @@ $statusLabels = [
     </main>
   </div>
 
+  <?php require __DIR__ . '/../../includes/review-modal.php'; ?>
+  <script src="../../scripts/review-modal.js"></script>
   <script src="../../scripts/profile.js"></script>
 </body>
 </html>

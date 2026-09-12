@@ -159,7 +159,12 @@ button { border: 0; cursor: pointer; }
 .status-delivered { background: rgba(120, 180, 130, 0.15); color: #86c690; }
 .status-cancelled { background: rgba(168, 70, 63, 0.15); color: #d98b83; }
 
-.order-items-preview { display: flex; gap: 8px; margin-bottom: 12px; }
+.order-items-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
 
 .order-item-thumb {
   width: 44px;
@@ -180,6 +185,37 @@ button { border: 0; cursor: pointer; }
 }
 
 .order-payment { opacity: 0.6; letter-spacing: 0.05em; }
+
+.order-item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.order-item-name {
+  flex: 1;
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.rate-button {
+  background: none;
+  border: 1px solid var(--champagne);
+  color: var(--champagne);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.rate-button:hover {
+  background: var(--champagne);
+  color: var(--ink);
+}
 
 @media (max-width: 800px) {
   .profile-layout { grid-template-columns: 1fr; }
