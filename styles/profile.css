@@ -25,20 +25,13 @@ button { border: 0; cursor: pointer; }
   padding: 0 clamp(24px, 5vw, 74px);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: clamp(24px, 5vw, 72px);
   border-bottom: 1px solid #f4ece314;
 }
 
 .logo-link img { width: 80px; height: 35px; object-fit: cover; }
 
-.main-nav {
-  display: flex;
-  gap: 24px;
-  margin-right: auto;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
 
 .logout-link {
   font-size: 10px;

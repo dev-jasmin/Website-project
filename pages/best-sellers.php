@@ -1,7 +1,15 @@
 <?php
+session_start();
 require __DIR__ . '/../database/config.php';
+require_once __DIR__ . '/../includes/current-user.php';
+
 $pdo = getConnection();
 $bestSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY total_orders DESC, id ASC LIMIT 10')->fetchAll();
+
+$profilePicture = null;
+if (isset($_SESSION['user_id'])) {
+    $profilePicture = getCurrentUserAvatar($pdo, $_SESSION['user_id']);
+}
 ?>
 
 <!doctype html>
@@ -28,14 +36,19 @@ $bestSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY t
       </nav>
 
       <div class="header-actions">
-        <a class="cart" href="./cart/cart.php">
-          <img src="../images/icon/cart.png" alt="">
-          <span class="cart-count" id="cartCount" hidden>0</span>
-        </a>
-
-        <a class="profile" href="./pages/profile/profile.php">
-          <img src="../images/profiles/default-profile.jpg" alt="">
-        </a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+          <a class="cart" href="./cart/cart.php">
+            <img src="../images/icon/cart.png" alt="">
+            <span class="cart-count" id="cartCount" hidden>0</span>
+          </a>
+          <a class="profile" href="./profile/profile.php">
+            <img src="<?= $profilePicture ? '../' . htmlspecialchars($profilePicture) : '../images/profiles/default-profile.jpg' ?>" alt="">
+          </a>
+        <?php else: ?>
+          <button class="login-button" type="button" data-open-auth="login">
+            Login / Register
+          </button>
+        <?php endif; ?>
       </div>
     </header>
 
@@ -112,7 +125,7 @@ $bestSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY t
       <p class="copyright">Copyright © 2026 Ember. All rights reserved.</p>
     </footer>
   </div>
-  <script src="../scripts/best"></script>
+
   <script src="../scripts/cart.js"></script>
 </body>
 </html>

@@ -1,3 +1,16 @@
+<?php
+session_start();
+require __DIR__ . '/../database/config.php';
+require_once __DIR__ . '/../includes/current-user.php';
+
+$pdo = getConnection();
+
+$profilePicture = null;
+if (isset($_SESSION['user_id'])) {
+    $profilePicture = getCurrentUserAvatar($pdo, $_SESSION['user_id']);
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,22 +29,27 @@
       <img src="../images/logo/logo-cream white.png" alt="">
       
       <nav class="main-nav">
-        <a href="../index.php">Home</a>
-        <a href="./shop.php">Shop</a>
-        <a href="./best-sellers.php">Best Sellers</a>
+        <a href="/website/index.php">Home</a>
+        <a href="./shop.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Shop</a>
+        <a href="./best-sellers.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Best Sellers</a>
         <a class="active" href="#about">About</a>
-        <a href="./contact.php">Contact</a>
+        <a href="./contact.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Contact</a>
       </nav>
 
       <div class="header-actions">
-        <a class="cart" href="./cart/cart.php">
-          <img src="../images/icon/cart.png" alt="">
-          <span class="cart-count" id="cartCount" hidden>0</span>
-        </a>
-
-        <a class="profile" href="./pages/profile/profile.php">
-          <img src="../images/profiles/default-profile.jpg" alt="">
-        </a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+          <a class="cart" href="./cart/cart.php">
+            <img src="../images/icon/cart.png" alt="">
+            <span class="cart-count" id="cartCount" hidden>0</span>
+          </a>
+          <a class="profile" href="./profile/profile.php">
+            <img src="<?= $profilePicture ? '../' . htmlspecialchars($profilePicture) : '../images/profiles/default-profile.jpg' ?>" alt="">
+          </a>
+        <?php else: ?>
+          <button class="login-button" type="button" data-open-auth="login">
+            Login / Register
+          </button>
+        <?php endif; ?>
       </div>
     </header>
 
@@ -210,6 +228,8 @@
       <p class="copyright">Copyright © 2026 Ember. All rights reserved.</p>
     </footer>
 
+    <?php require __DIR__ . '/../includes/auth-modal.php'; ?>
+    <script src="../scripts/auth-modal.js"></script>
     <script src="../scripts/about.js"></script>
     <script src="../scripts/cart.js"></script>
   </body>

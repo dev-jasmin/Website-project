@@ -4,6 +4,13 @@ session_start();
 require __DIR__ . '/database/config.php';
 $pdo = getConnection();
 $topSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY total_orders DESC, id ASC LIMIT 10')->fetchAll();
+
+require_once __DIR__ . '/includes/current-user.php';
+
+$profilePicture = null;
+if (isset($_SESSION['user_id'])) {
+    $profilePicture = getCurrentUserAvatar($pdo, $_SESSION['user_id']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +47,7 @@ $topSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY to
             </a>
 
             <a class="profile" href="./pages/profile/profile.php">
-              <img src="images/profiles/default-profile.jpg" alt="">
+              <img src="<?= $profilePicture ? htmlspecialchars($profilePicture) : 'images/profiles/default-profile.jpg' ?>" alt="">
             </a>
           <?php else: ?>
             <button class="login-button" type="button" data-open-auth="login">
