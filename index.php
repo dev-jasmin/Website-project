@@ -109,9 +109,9 @@ if (isset($_SESSION['user_id'])) {
         </h2>
         <p>Earn points on every order and unlock exclusive perks.
         </p>
-        <button class="button button-dark" <?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
+        <a class="button button-dark" href="<?php echo isset($_SESSION['user_id']) ? './pages/profile/profile.php' : '#'; ?>"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
           Join now
-        </button>
+        </a>
       </div>
       
       <div class="perks">

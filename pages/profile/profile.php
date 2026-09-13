@@ -12,7 +12,7 @@ $pdo = getConnection();
 
 $isAdmin = isCurrentUserAdmin($pdo, $_SESSION['user_id']);
 
-$userStmt = $pdo->prepare('SELECT username, email, created_at, profile_picture FROM user WHERE id = :id');
+$userStmt = $pdo->prepare('SELECT username, email, created_at, profile_picture, loyalty_points FROM user WHERE id = :id');
 $userStmt->bindValue(':id', $_SESSION['user_id']);
 $userStmt->execute();
 $user = $userStmt->fetch();
@@ -116,6 +116,11 @@ $statusLabels = [
             <div class="profile-detail">
               <span>Member since</span>
               <strong><?= date('F Y', strtotime($user['created_at'])) ?></strong>
+            </div>
+
+            <div class="profile-detail">
+              <span>Loyalty points</span>
+              <strong><?= number_format($user['loyalty_points']) ?> pts</strong>
             </div>
 
             <?php if ($isAdmin): ?>

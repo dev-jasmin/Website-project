@@ -90,6 +90,14 @@ try {
     $clearStmt->bindValue(':user_id', $userId);
     $clearStmt->execute();
 
+    // Award 1 loyalty point per ₱10 spent
+    $pointsEarned = (int) floor($total / 10);
+
+    $pointsStmt = $pdo->prepare('UPDATE user SET loyalty_points = loyalty_points + :points WHERE id = :user_id');
+    $pointsStmt->bindValue(':points', $pointsEarned);
+    $pointsStmt->bindValue(':user_id', $userId);
+    $pointsStmt->execute();
+
     $pdo->commit();
 
     header('Location: checkout.php?order_id=' . $orderId . '&payment_method=' . $paymentMethod . '&total=' . $total);
