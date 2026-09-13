@@ -110,7 +110,7 @@ if (isset($_SESSION['user_id'])) {
         <p>Earn points on every order and unlock exclusive perks.
         </p>
         <a class="button button-dark" href="<?php echo isset($_SESSION['user_id']) ? './pages/profile/profile.php' : '#'; ?>"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
-          Join now
+          View my points
         </a>
       </div>
       
@@ -122,21 +122,23 @@ if (isset($_SESSION['user_id'])) {
           <strong>Earn points</strong>
           <small>For every peso spent</small>
         </div>
-      
-        <div class="perk">
+
+        <div class="perk is-coming-soon">
           <div class="perk-icon">
             <img src="images/icon/gifts.png" alt="">
           </div>
-          <strong>Unlock gifts</strong
-          ><small>Exclusive discounts & gifts</small>
+          <strong>Unlock gifts</strong>
+          <small>Exclusive discounts & gifts</small>
+          <span class="coming-soon-tag">Coming soon</span>
         </div>
-        
-        <div class="perk">
+
+        <div class="perk is-coming-soon">
           <div class="perk-icon">
             <img src="images/icon/crown.png" alt="">
           </div>
           <strong>VIP access</strong>
           <small>Early access to new drops</small>
+          <span class="coming-soon-tag">Coming soon</span>
         </div>
       </div>
     </section>
