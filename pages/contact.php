@@ -237,6 +237,8 @@ if (isset($_SESSION['user_id'])) {
     </footer>
 
     <?php require __DIR__ . '/../includes/auth-modal.php'; ?>
+    <script>window.emberNewsletterBasePath = "../";</script>
+    <script src="../scripts/newsletter.js"></script>
     <script src="../scripts/auth-modal.js"></script>
     <script src="../scripts/contact.js"></script>
     <script src="../scripts/cart.js"></script>

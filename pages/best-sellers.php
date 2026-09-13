@@ -129,6 +129,8 @@ if (isset($_SESSION['user_id'])) {
 
   <?php require __DIR__ . '/../includes/product-modal.php'; ?>
   <script>window.emberImageBasePath = "../";</script>
+  <script>window.emberNewsletterBasePath = "../";</script>
+  <script src="../scripts/newsletter.js"></script>
   <script src="../scripts/cart.js"></script>
   <script src="../scripts/product-modal.js"></script>
 </body>

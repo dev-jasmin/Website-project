@@ -175,6 +175,37 @@ button { border: 0; cursor: pointer; }
 
 .admin-delete-button:hover { border-color: #a8463f; color: #d98b83; }
 
+.admin-subscribers {
+  margin-top: 32px;
+  background: #211f1d;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.admin-subscribers h3 { font: 500 18px var(--serif); margin: 0 0 16px; }
+.admin-empty-note { font-size: 12px; opacity: 0.6; }
+
+.admin-subscriber-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.admin-subscriber-table th {
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.1);
+}
+
+.admin-subscriber-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+}
+
 @media (max-width: 800px) {
   .admin-layout { grid-template-columns: 1fr; }
   .admin-product-row { flex-wrap: wrap; }

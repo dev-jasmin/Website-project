@@ -114,7 +114,32 @@ $statusMessage = $_GET['message'] ?? '';
           <?php endforeach; ?>
         </div>
       </div>
-    </main>
+        
+      <?php
+      $subscribers = $pdo->query('SELECT email, subscribed_at FROM newsletter_subscriber ORDER BY subscribed_at DESC')->fetchAll();
+      ?>
+
+      <div class="admin-subscribers">
+        <h3>Newsletter subscribers (<?= count($subscribers) ?>)</h3>
+        <?php if (empty($subscribers)): ?>
+          <p class="admin-empty-note">No subscribers yet.</p>
+        <?php else: ?>
+          <table class="admin-subscriber-table">
+            <thead>
+              <tr><th>Email</th><th>Subscribed</th></tr>
+            </thead>
+            <tbody>
+              <?php foreach ($subscribers as $sub): ?>
+                <tr>
+                  <td><?= htmlspecialchars($sub['email']) ?></td>
+                  <td><?= date('M j, Y', strtotime($sub['subscribed_at'])) ?></td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        <?php endif; ?>
+      </div>
+  </main>
   </div>
 </body>
 </html>
