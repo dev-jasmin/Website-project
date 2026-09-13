@@ -1,0 +1,39 @@
+:root {
+  --ink:#1A1A1A;
+  --paper:#F5F0E8;
+  --champagne:#C9A96E;
+  --sans:'Poppins',Arial,sans-serif;
+}
+
+body { 
+  margin: 0; 
+  background: var(--ink); 
+  color: var(--paper); 
+  font-family: var(--sans); 
+  padding: 60px clamp(24px, 8vw, 120px); 
+}
+
+.back-link { 
+  display: inline-block; 
+  margin-bottom: 30px; 
+  font-size: 12px; 
+  opacity: 0.7; 
+  text-decoration: none; 
+  color: inherit; 
+}
+
+.back-link:hover { 
+  color: var(--champagne); 
+}
+
+h1 { 
+  font-size: 32px; 
+  margin-bottom: 20px; 
+}
+
+p { 
+  line-height: 1.7;
+  max-width: 600px; 
+  opacity: 0.85; 
+}
+

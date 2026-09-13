@@ -737,30 +737,41 @@ button:active,.button:active, .circle-link:active{
 .site-footer{
   background:var(--paper);
   color:var(--ink);
-  padding:43px clamp(24px,9vw,138px) 22px
-}
-
-.footer-links{
+  padding:43px clamp(24px,9vw,138px) 22px;
   display:grid;
   grid-template-columns:1fr 1.3fr 1fr;
-  gap:70px
+  align-items:center;
+  column-gap:70px;
+  row-gap:28px
 }
 
-.footer-links>div:not(.footer-signup){
+.footer-links,
+.footer-column{
   display:flex;
   flex-direction:column;
-  align-items: center;
-  justify-content: center;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-align:center
+}
+
+.site-footer > div:not(.footer-signup):not(.footer-links){
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
   gap:8px
 }
 
-.footer-links strong{
+.footer-links strong,
+.footer-column strong{
   text-transform:uppercase
   ;font-size:9px;
   letter-spacing:.12em;margin-bottom:5px
 }
 
-.footer-links a{
+.footer-links a,
+.footer-column a{
   font-size:9px;
   color:#71675d
 }
@@ -795,6 +806,7 @@ button:active,.button:active, .circle-link:active{
 }
 
 .copyright{
+  grid-column:1 / -1;
   text-align:center;
   border-top:1px solid #d4c6b9;
   padding-top:16px;
@@ -996,9 +1008,8 @@ button:active,.button:active, .circle-link:active{
     gap: 30px;
   }
 
-  .footer-links {
-    grid-template-columns: 1fr 1fr;
-    gap: 35px;
+  .site-footer {
+    grid-template-columns: 1fr;
   }
 
   .footer-signup {
@@ -1006,9 +1017,6 @@ button:active,.button:active, .circle-link:active{
     grid-row: 1;
   }
 
-  .socials {
-    gap: 40px;
-  }
 }
 
 @media (max-width: 430px) {
@@ -1098,15 +1106,10 @@ button:active,.button:active, .circle-link:active{
     height: 140px;
   }
 
-  .footer-links {
-    grid-template-columns: 1fr;
+    grid-column: auto;
   }
-
   .footer-signup {
     grid-column: auto;
   }
 
-  .socials {
-    gap: 28px;
-  }
 }

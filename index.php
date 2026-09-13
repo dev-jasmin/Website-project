@@ -60,7 +60,7 @@ if (isset($_SESSION['user_id'])) {
       <section class="hero">
         <div class="hero-text">
           <h1>Find<br />Your <em>Warmth</em></h1>
-          <a class="button button-champagne" href="#bestsellers" <?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Shop now</a>
+          <a class="button button-champagne" href="pages/shop.php" <?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Shop now</a>
         </div>
 
         <div class="hero-art">
@@ -193,9 +193,9 @@ if (isset($_SESSION['user_id'])) {
       <article>
         <p class="eyebrow">Exclusive offer</p>
         <h2>Get 15% Off<br />Your First Order</h2>
-        <button class="button button-champagne"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
+        <a class="button button-champagne" href="pages/shop.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
           shop now
-        </button>
+        </a>
       </article>
       
       <div class="image-placeholder">
@@ -205,9 +205,9 @@ if (isset($_SESSION['user_id'])) {
       <article>
         <p class="eyebrow">limited edition</p>
         <h2>Luxury Collection<br />Just For You</h2>
-        <button class="button button-outline"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
+        <a class="button button-outline" href="pages/shop.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>
           discover now
-        </button>
+        </a>
       </article>
       
       <div class="image-placeholder">
@@ -224,7 +224,7 @@ if (isset($_SESSION['user_id'])) {
         <p class="eyebrow">Find your scent</p>
         <h2>Collection<br /><em>Sale 15% Off</em></h2>
         <p>Start from Dec 25 to Dec 27</p>
-        <a class="button button-outline" href="#bestsellers"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Shop now</a>
+        <a class="button button-outline" href="pages/shop.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Shop now</a>
       </div>
     </section>
 
@@ -238,7 +238,7 @@ if (isset($_SESSION['user_id'])) {
         <h2>Warmth, bottled.</h2>
         <p>Ember is a unique fragrance house built on warmth, authenticity, and timeless elegance. We create scents that speak without words designed for those who move through life with quiet confidence.
         </p>
-        <a class="button button-outline" href="#contact"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Discover our story </a>
+        <a class="button button-outline" href="pages/about.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Discover our story </a>
       </div>
       
       <div class="subscribe-card">
@@ -298,14 +298,12 @@ if (isset($_SESSION['user_id'])) {
     </section>
 
     <footer class="site-footer">
-      <div class="footer-links"><div>
+      <div class="footer-links footer-column">
         <strong>Quick links</strong>
-        <a href="#">Shop All</a>
-        <a href="#">Best sellers</a>
-        <a href="#">Our Story</a>
-        <a href="#">New Arrivals</a>
-        <a href="#">Loyalty Card</a>
-      </div>
+        <a href="pages/shop.php">Shop All</a>
+        <a href="pages/best-sellers.php">Best sellers</a>
+        <a href="pages/about.php">Our Story</a>
+      </div>  
       
       <div class="footer-signup">
         <a class="brand footer-brand" href="#top">
@@ -322,22 +320,24 @@ if (isset($_SESSION['user_id'])) {
           </form>
         
         <div class="socials">
-          <img src="images/icon/facebook.png" alt="">
-          <img src="images/icon/twitter.png" alt="">
-          <img src="images/icon/instagram.png" alt="">
+          <a href="https://facebook.com/Ember Fragrance" target="_blank" rel="noopener noreferrer" aria-label="Ember on Facebook">
+            <img src="images/icon/facebook.png" alt="Facebook">
+          </a>
+          <a href="https://twitter.com/EmberFragrance" target="_blank" rel="noopener noreferrer" aria-label="Ember on Twitter">
+            <img src="images/icon/twitter.png" alt="Twitter">
+          </a>
+          <a href="https://instagram.com/EmberFragrance" target="_blank" rel="noopener noreferrer" aria-label="Ember on Instagram">
+            <img src="images/icon/instagram.png" alt="Instagram">
+          </a>
         </div>
       </div> 
         
-        <div>
+        <div class="footer-column">
           <strong>Information</strong>
-          <a href="#">FAQs</a>
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Delivery</a>
-          <a href="#contact">Contact us</a>
-          <a href="#">Return Policy</a>
+          <a href="pages/contact.php">Contact us</a>
+          <a href="pages/delivery.php">Delivery</a>
+          <a href="pages/return-policy.php">Return Policy</a>
         </div>
-      </div>
-      
       <p class="copyright">Copyright © 2026 Ember. All rights reserved.</p>
     </footer>
   </main>

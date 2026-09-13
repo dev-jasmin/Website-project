@@ -34,7 +34,7 @@ if (isset($_SESSION['user_id'])) {
         <a class="active" href="#contact">Contact</a>
       </nav>
 
-      <<div class="header-actions">
+      <div class="header-actions">
         <?php if (isset($_SESSION['user_id'])): ?>
           <a class="cart" href="./cart/cart.php">
             <img src="../images/icon/cart.png" alt="">
@@ -193,47 +193,48 @@ if (isset($_SESSION['user_id'])) {
       </main>
 
     <footer class="site-footer">
-        <div class="footer-links"><div>
-          <strong>Quick links</strong>
-          <a href="#">Shop All</a>
-          <a href="#">Best sellers</a>
-          <a href="#">Our Story</a>
-          <a href="#">New Arrivals</a>
-          <a href="#">Loyalty Card</a>
-        </div>
+      <div class="footer-column">
+        <strong>Quick links</strong>
+        <a href="./shop.php">Shop All</a>
+        <a href="./best-sellers.php">Best sellers</a>
+        <a href="./about.php">Our Story</a>
+      </div>
+      
+      <div class="footer-signup">
+        <a class="brand footer-brand" href="#top">
+          <img src="../images/logo/logo-charcoal black.png" alt="">
+        </a>
+
+        <p>Private notes, early drops,<br />and scent stories.</p>
+
+          <form class="subscribe-form">
+            <input type="email" placeholder="Your email here" required />
+            
+            <button class="button button-champagne" type="submit">Submit
+            </button>
+          </form>
         
-        <div class="footer-signup">
-          <a class="brand footer-brand" href="#top">
-            <img src="../images/logo/logo-charcoal black.png" alt="">
+        <div class="socials">
+          <a href="https://facebook.com/Ember Fragrance" target="_blank" rel="noopener noreferrer" aria-label="Ember on Facebook">
+            <img src="../images/icon/facebook.png" alt="Facebook">
           </a>
-
-          <p>Private notes, early drops,<br />and scent stories.</p>
-
-            <form class="subscribe-form">
-              <input type="email" placeholder="Your email here" required />
-              
-              <button class="button button-champagne" type="submit">Submit
-              </button>
-            </form>
-          
-          <div class="socials">
-            <img src="../images/icon/facebook.png" alt="">
-            <img src="../images/icon/twitter.png" alt="">
-            <img src="../images/icon/instagram.png" alt="">
-          </div>
-        </div> 
-          
-          <div>
-            <strong>Information</strong>
-            <a href="#">FAQs</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Delivery</a>
-            <a href="#contact">Contact us</a>
-            <a href="#">Return Policy</a>
-          </div>
+          <a href="https://twitter.com/EmberFragrance" target="_blank" rel="noopener noreferrer" aria-label="Ember on Twitter">
+            <img src="../images/icon/twitter.png" alt="Twitter">
+          </a>
+          <a href="https://instagram.com/EmberFragrance" target="_blank" rel="noopener noreferrer" aria-label="Ember on Instagram">
+            <img src="../images/icon/instagram.png" alt="Instagram">
+          </a>
         </div>
+      </div> 
         
-        <p class="copyright">Copyright © 2026 Ember. All rights reserved.</p>
+        <div class="footer-column">
+          <strong>Information</strong>
+          <a href="./contact.php">Contact us</a>
+          <a href="./delivery.php">Delivery</a>
+          <a href="./return-policy.php">Return Policy</a>
+        </div>
+      
+      <p class="copyright">Copyright © 2026 Ember. All rights reserved.</p>
     </footer>
 
     <?php require __DIR__ . '/../includes/auth-modal.php'; ?>
