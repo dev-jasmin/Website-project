@@ -217,6 +217,12 @@ button { border: 0; cursor: pointer; }
   color: var(--ink);
 }
 
+.admin-panel-link {
+  width: 100%;
+  justify-content: center;
+  margin-top: 16px;
+}
+
 @media (max-width: 800px) {
   .profile-layout { grid-template-columns: 1fr; }
 }
