@@ -206,6 +206,39 @@ button { border: 0; cursor: pointer; }
   border-bottom: 1px solid rgba(245, 240, 232, 0.06);
 }
 
+.admin-message-card {
+  background: rgba(245, 240, 232, 0.03);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.admin-message-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+
+.admin-message-header span { opacity: 0.6; }
+.admin-message-date { margin-left: auto; }
+
+.admin-message-subject {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--champagne);
+  margin: 0 0 6px;
+}
+
+.admin-message-body {
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 0;
+}
+
 @media (max-width: 800px) {
   .admin-layout { grid-template-columns: 1fr; }
   .admin-product-row { flex-wrap: wrap; }

@@ -55,13 +55,30 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.disabled = true;
     submitButton.innerHTML = "Sending <span aria-hidden='true'>…</span>";
 
-    window.setTimeout(() => {
-      form.reset();
-      form.querySelectorAll(".form-field").forEach((field) => field.classList.remove("has-error"));
-      form.querySelectorAll(".error").forEach((error) => { error.textContent = ""; });
-      submitButton.disabled = false;
-      submitButton.innerHTML = "Message sent <span aria-hidden='true'>✓</span>";
-      status.textContent = "Thank you — your note is on its way to us.";
-    }, 650);
+    fetch("contact-submit.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `name=${encodeURIComponent(name.value)}&email=${encodeURIComponent(email.value)}&subject=${encodeURIComponent(subject.value)}&message=${encodeURIComponent(message.value)}`,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          form.reset();
+          form.querySelectorAll(".form-field").forEach((field) => field.classList.remove("has-error"));
+          form.querySelectorAll(".error").forEach((error) => { error.textContent = ""; });
+          submitButton.innerHTML = "Message sent";
+          status.textContent = "Thank you, your note is on its way to us.";
+        } else {
+          submitButton.innerHTML = "Send message";
+          status.textContent = "Something went wrong. Please try again.";
+        }
+      })
+      .catch(() => {
+        submitButton.innerHTML = "Send message";
+        status.textContent = "Something went wrong. Please try again.";
+      })
+      .finally(() => {
+        submitButton.disabled = false;
+      });
   });
 });

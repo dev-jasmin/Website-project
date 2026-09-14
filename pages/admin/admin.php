@@ -139,6 +139,29 @@ $statusMessage = $_GET['message'] ?? '';
           </table>
         <?php endif; ?>
       </div>
+
+      <?php
+      $messages = $pdo->query('SELECT * FROM contact_message ORDER BY created_at DESC')->fetchAll();
+      ?>
+
+      <div class="admin-subscribers">
+        <h3>Contact messages (<?= count($messages) ?>)</h3>
+        <?php if (empty($messages)): ?>
+          <p class="admin-empty-note">No messages yet.</p>
+        <?php else: ?>
+          <?php foreach ($messages as $msg): ?>
+            <article class="admin-message-card">
+              <div class="admin-message-header">
+                <strong><?= htmlspecialchars($msg['name']) ?></strong>
+                <span><?= htmlspecialchars($msg['email']) ?></span>
+                <span class="admin-message-date"><?= date('M j, Y g:ia', strtotime($msg['created_at'])) ?></span>
+              </div>
+              <p class="admin-message-subject"><?= htmlspecialchars(ucfirst($msg['subject'])) ?></p>
+              <p class="admin-message-body"><?= nl2br(htmlspecialchars($msg['message'])) ?></p>
+            </article>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </div>
   </main>
   </div>
 </body>
