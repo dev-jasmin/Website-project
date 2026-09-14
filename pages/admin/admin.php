@@ -2,6 +2,8 @@
 session_start();
 require __DIR__ . '/../../database/config.php';
 require_once __DIR__ . '/../../includes/current-user.php';
+require_once __DIR__ . '/../../includes/csrf.php';
+$csrfToken = csrfToken();
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: /website/index.php');
@@ -110,6 +112,7 @@ $statusMessage = $_GET['message'] ?? '';
           <div class="admin-add-card">
             <h3>Add new product</h3>
             <form action="product-add.php" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>">
               <label class="form-field">
                 <span>Name</span>
                 <input type="text" name="name" required>
@@ -153,12 +156,14 @@ $statusMessage = $_GET['message'] ?? '';
                 <div class="admin-product-actions">
                   <form action="product-toggle.php" method="post">
                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>">
                     <button class="admin-action-button" type="submit">
                       <?= $product['is_active'] ? 'Deactivate' : 'Activate' ?>
                     </button>
                   </form>
                   <form action="product-delete.php" method="post" onsubmit="return confirm('Delete this product permanently? This cannot be undone.');">
                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>">
                     <button class="admin-action-button admin-delete-button" type="submit">Delete</button>
                   </form>
                 </div>

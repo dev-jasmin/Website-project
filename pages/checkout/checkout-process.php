@@ -17,7 +17,7 @@ $phone = trim($_POST['phone'] ?? '');
 $address = trim($_POST['address'] ?? '');
 $notes = trim($_POST['notes'] ?? '');
 
-if ($recipientName === '' || $phone === '' || $address === '') {
+if ($recipientName === '' || $phone === '' || $address === '' || !preg_match('/^[0-9+\-\s()]{7,15}$/', $phone)) {
     header('Location: checkout.php?message=' . urlencode('Please fill in all required delivery details.'));
     exit;
 }
