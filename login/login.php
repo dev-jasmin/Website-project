@@ -36,6 +36,8 @@ try {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['username'] = $user['username'];
 
+    session_regenerate_id(true);
+
     header('Location: ' . $returnTo);
     exit;
 } catch (PDOException $e) {

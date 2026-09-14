@@ -47,6 +47,8 @@ try {
     $_SESSION['user_id'] = $pdo->lastInsertId();
     $_SESSION['username'] = $result['data']['username'];
 
+    session_regenerate_id(true);
+
     header('Location: ' . $returnTo);
     exit;
 } catch (PDOException $e) {

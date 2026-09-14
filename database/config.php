@@ -15,6 +15,8 @@ function getConnection() {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch (PDOException $e) {
-        die('Connection failed: ' . $e->getMessage());
+    error_log('Database connection failed: ' . $e->getMessage());
+    die('Something went wrong. Please try again later.');
     }
-}
+}   
+

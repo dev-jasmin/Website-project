@@ -237,4 +237,3 @@ $statusMessage = $_GET['message'] ?? '';
   <script src="../../scripts/admin.js"></script>
 </body>
 </html>
-</html>

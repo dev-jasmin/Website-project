@@ -236,7 +236,7 @@ button:active,.button:active, .circle-link:active{
 .hero-art .image-1{
   position: absolute;
   left: -45%;
-  bottom: -70;
+  bottom: -70px;
   width: 800px;
   height: 500px;
   object-fit: cover;
