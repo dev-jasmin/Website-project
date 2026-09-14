@@ -65,10 +65,10 @@ if (isset($_SESSION['user_id'])) {
           </h1>
 
           <div class="social-row" aria-label="Social links">
-            <a href="#">Instagram</a>
-            <a href="#">X</a>
-            <a href="#">Facebook</a>
-            <a href="#">Email</a>
+            <a href="https://instagram.com/EmberFragrance" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://twitter.com/EmberFragrance" target="_blank" rel="noopener noreferrer">X</a>
+            <a href="https://facebook.com/Ember Fragrance" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="mailto:hello@emberfragrance.com">Email</a>
           </div>
         </section>
 
@@ -168,7 +168,6 @@ if (isset($_SESSION['user_id'])) {
             </h2>
 
             <div class="office-copy">
-              <strong>Dhaka</strong>
               <br />North Road, National Highway<br />
               Dumaguete City, Negros Oriental 6200<br />Philippines
             </div>

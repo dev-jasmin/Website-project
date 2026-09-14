@@ -834,21 +834,34 @@ button:active,.button:active, .circle-link:active{
 
 @media (max-width: 800px) {
   .homepage-header {
-    height: 76px;
-    padding: 0 clamp(24px, 5vw, 74px);
-    display: flex;
-    gap: clamp(24px, 5vw, 72px);
+    height: auto;
+    min-height: 76px;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 20px;
   }
 
   .homepage-header > img {
-    width: 80px;
-    height: 35px;
-    margin-right: 52px;
-    object-fit: cover;
+    margin-right: 0;
   }
 
   .main-nav {
-    display: none;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .main-nav a {
+    padding: 4px 0;
+  }
+
+  .main-nav .active::after {
+    bottom: -2px;
   }
 
   .header-actions {
@@ -882,21 +895,25 @@ button:active,.button:active, .circle-link:active{
   }
 
   .hero-art .image-1 {
-    left: -18%;
-    bottom: -5px;
-    width: 135%;
+    bottom: 0;
+    width: 100%;
     max-width: none;
-    height: 310px;
+    height: 300px;
     object-fit: contain;
   }
 
   .hero-art .image-2 {
-    left: 15%;
-    bottom: 0;
-    width: 90%;
+    bottom: 30px;
+    width: 100%;
     max-width: none;
-    height: 300px;
+    height: 240px;
     object-fit: contain;
+    left: 12%;
+  }
+
+  .hero-art .image-1 {
+    left: -12%;
+    bottom: -5px;
   }
 
   .hero h1 {
@@ -1010,6 +1027,30 @@ button:active,.button:active, .circle-link:active{
 }
 
 @media (max-width: 430px) {
+  .homepage-header {
+    padding: 14px 16px;
+    gap: 10px 16px;
+  }
+
+  .homepage-header > img {
+    width: 68px;
+    height: 30px;
+  }
+
+  .main-nav {
+    font-size: 8px;
+    gap: 6px 10px;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+
+  .login-button {
+    font-size: 9px;
+    padding: 8px 12px;
+  }
+
   .hero {
     padding: 25px 16px 40px;
   }
@@ -1018,16 +1059,19 @@ button:active,.button:active, .circle-link:active{
     height: 280px;
   }
 
+  .hero-art .image-1,
+  .hero-art .image-2 {
+    width: 100%;
+    height: 285px;
+  }
+
   .hero-art .image-1 {
-    left: -25%;
-    width: 150%;
-    height: 295px;
+    left: -12%;
+    bottom: -5px;
   }
 
   .hero-art .image-2 {
-    left: 10%;
-    width: 96%;
-    height: 285px;
+    left: 12%;
   }
 
   .hero h1 {

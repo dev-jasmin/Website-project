@@ -641,38 +641,35 @@ em {
 }
 
 @media (max-width: 800px) {
-  .site-header {
-    height: 65px;
+  .about-header {
+    height: auto;
+    min-height: 76px;
+    padding: 16px 20px;
+    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 12px 20px;
   }
 
-  .about-header {
-    height: 65px;
-    justify-content: space-between;
+  .about-header > img {
+    margin-right: 0;
   }
 
   .main-nav {
-    display: none;
-    position: absolute;
-    top: 65px;
-    left: 15px;
-    right: 15px;
-    background: #242321;
-    border: 1px solid var(--line);
-    padding: 12px 18px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
   }
 
   .main-nav a {
-    padding: 13px 0;
-    width: 100%;
-    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
   }
 
   .main-nav .active::after {
-    display: none;
+    bottom: -2px;
   }
 
   .header-actions {
@@ -734,6 +731,32 @@ em {
   .footer-signup {
     grid-column: 1 / -1;
     grid-row: 1;
+  }
+}
+
+@media (max-width: 430px) {
+  .about-header {
+    padding: 14px 16px;
+    gap: 10px 16px;
+  }
+
+  .about-header > img {
+    width: 68px;
+    height: 30px;
+  }
+
+  .main-nav {
+    font-size: 8px;
+    gap: 6px 10px;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+
+  .login-button {
+    font-size: 9px;
+    padding: 8px 12px;
   }
 }
 

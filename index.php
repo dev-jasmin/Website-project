@@ -302,9 +302,9 @@ if (isset($_SESSION['user_id'])) {
     <footer class="site-footer">
       <div class="footer-links footer-column">
         <strong>Quick links</strong>
-        <a href="pages/shop.php">Shop All</a>
-        <a href="pages/best-sellers.php">Best sellers</a>
-        <a href="pages/about.php">Our Story</a>
+        <a href="pages/shop.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Shop All</a>
+        <a href="pages/best-sellers.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Best sellers</a>
+        <a href="pages/about.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Our Story</a>
       </div>  
       
       <div class="footer-signup">
@@ -336,9 +336,9 @@ if (isset($_SESSION['user_id'])) {
         
         <div class="footer-column">
           <strong>Information</strong>
-          <a href="pages/contact.php">Contact us</a>
-          <a href="pages/delivery.php">Delivery</a>
-          <a href="pages/return-policy.php">Return Policy</a>
+          <a href="pages/contact.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Contact us</a>
+          <a href="pages/delivery.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Delivery</a>
+          <a href="pages/return-policy.php"<?php if (!isset($_SESSION['user_id'])) echo ' data-open-auth="login"'; ?>>Return Policy</a>
         </div>
       <p class="copyright">Copyright © 2026 Ember. All rights reserved.</p>
     </footer>

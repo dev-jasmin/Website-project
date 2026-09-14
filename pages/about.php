@@ -76,7 +76,6 @@ if (isset($_SESSION['user_id'])) {
 
           <a class="text-link reveal" style="--delay: 260ms" href="#manifesto">
             Read our point of view 
-            <span aria-hidden="true">↗</span>
           </a>
         </div>
 
@@ -169,7 +168,6 @@ if (isset($_SESSION['user_id'])) {
 
       <section class="closing" aria-label="Ember closing statement">
         <p class="eyebrow reveal">
-          <span></span>
            Find your warmth
         </p>
 
@@ -179,7 +177,6 @@ if (isset($_SESSION['user_id'])) {
 
         <a class="button reveal" href="./best-sellers.php">
           Explore the collection 
-          <span aria-hidden="true">↗</span>
         </a>
       </section>
     </main>
