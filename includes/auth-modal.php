@@ -1,6 +1,8 @@
 <?php
 $returnTo = $_SERVER['REQUEST_URI'] ?? '/index.php';
 $message = $_GET['message'] ?? '';
+$status = $_GET['status'] ?? '';
+$showFormStatus = $status === 'error' && $message !== '';
 ?>
 
 <div class="modal-overlay" id="authModalOverlay" hidden>
@@ -19,10 +21,10 @@ $message = $_GET['message'] ?? '';
         <section class="auth-form" id="loginPanel">
             <h2 id="authModalTitle">Log in</h2>
             <p class="auth-intro">Return to your saved scents, rewards, and Ember account.</p>
-            <?php if ($message !== ''): ?>
+            <?php if ($showFormStatus): ?>
                 <p class="form-status-error"><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
             <?php endif; ?>
-            <form action="login/login.php" method="post">
+            <form action="login/login.php" method="post" novalidate>
                 <input type="hidden" name="return_to" class="return-to-field" value="<?= htmlspecialchars($returnTo, ENT_QUOTES, 'UTF-8') ?>">
                 <div class="field-group">
                     <label for="loginUsername">Username or email</label>
@@ -42,7 +44,7 @@ $message = $_GET['message'] ?? '';
         <section class="auth-form hidden" id="signupPanel">
             <h2>Sign up</h2>
             <p class="auth-intro">Create your Ember account and keep close to your favorite scents.</p>
-            <form action="register/register.php" method="post">
+            <form action="register/register.php" method="post" novalidate>
                 <input type="hidden" name="return_to" class="return-to-field" value="<?= htmlspecialchars($returnTo, ENT_QUOTES, 'UTF-8') ?>">
                 <div class="field-group">
                     <label for="signupUsername">Username</label>

@@ -3,9 +3,14 @@ session_start();
 
 require __DIR__ . '/database/config.php';
 $pdo = getConnection();
-$topSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY total_orders DESC, id ASC LIMIT 10')->fetchAll();
-
 require_once __DIR__ . '/includes/current-user.php';
+
+if (isset($_SESSION['user_id']) && !refreshCurrentUserSession($pdo)) {
+    header('Location: /website/index.php?auth=login&status=error&message=' . urlencode('Your session is no longer valid. Please log in again.'));
+    exit;
+}
+
+$topSellers = $pdo->query('SELECT * FROM product WHERE is_active = 1 ORDER BY total_orders DESC, id ASC LIMIT 10')->fetchAll();
 
 $profilePicture = null;
 if (isset($_SESSION['user_id'])) {

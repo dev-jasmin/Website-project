@@ -124,6 +124,16 @@ a{
   box-shadow:0 0 0 3px #b69a611c
 }
 
+.field-group input:invalid {
+  box-shadow: none;
+  border-color: #ffffff14;
+}
+
+.field-group input:focus:invalid {
+  border-color: var(--champagne);
+  box-shadow: 0 0 0 3px #b69a611c;
+}
+
 .password-field{
   position:relative
 }

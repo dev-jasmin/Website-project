@@ -15,7 +15,18 @@ $isAdmin = isCurrentUserAdmin($pdo, $_SESSION['user_id']);
 $userStmt = $pdo->prepare('SELECT username, email, created_at, profile_picture, loyalty_points FROM user WHERE id = :id');
 $userStmt->bindValue(':id', $_SESSION['user_id']);
 $userStmt->execute();
-$user = $userStmt->fetch();
+$user = $userStmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    $_SESSION = [];
+    if (ini_get('session.use_cookies')) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+    }
+    session_destroy();
+    header('Location: /website/index.php?auth=login&status=error&message=' . urlencode('Your session is no longer valid. Please log in again.'));
+    exit;
+}
 
 $ordersStmt = $pdo->prepare(
     'SELECT id, total, status, payment_method, created_at
