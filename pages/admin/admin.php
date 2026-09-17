@@ -185,9 +185,18 @@ $statusMessage = $_GET['message'] ?? '';
                 <span><?= htmlspecialchars($order['username']) ?></span>
                 <span class="admin-order-date"><?= date('M j, Y', strtotime($order['created_at'])) ?></span>
               </div>
-              <span class="order-status status-<?= htmlspecialchars($order['status']) ?>">
-                <?= htmlspecialchars(ucfirst($order['status'])) ?>
-              </span>
+
+              <form class="order-status-form" action="order-update-status.php" method="post">
+                <input type="hidden" name="order_id" value="<?= $order['id'] ?>">
+                <select name="status" onchange="this.form.submit()">
+                  <option value="placed" <?= $order['status'] === 'placed' ? 'selected' : '' ?>>Order placed</option>
+                  <option value="processing" <?= $order['status'] === 'processing' ? 'selected' : '' ?>>Processing</option>
+                  <option value="shipped" <?= $order['status'] === 'shipped' ? 'selected' : '' ?>>Shipped</option>
+                  <option value="delivered" <?= $order['status'] === 'delivered' ? 'selected' : '' ?>>Delivered</option>
+                  <option value="cancelled" <?= $order['status'] === 'cancelled' ? 'selected' : '' ?>>Cancelled</option>
+                </select>
+              </form>
+
               <span class="admin-order-payment"><?= strtoupper($order['payment_method']) ?></span>
               <strong class="admin-order-total">&#8369;<?= number_format($order['total']) ?></strong>
             </article>
@@ -203,7 +212,12 @@ $statusMessage = $_GET['message'] ?? '';
           <p class="admin-empty-note">No subscribers yet.</p>
         <?php else: ?>
           <table class="admin-subscriber-table">
-            <thead><tr><th>Email</th><th>Subscribed</th></tr></thead>
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Subscribed</th>
+              </tr>
+            </thead>
             <tbody>
               <?php foreach ($subscribers as $sub): ?>
                 <tr>

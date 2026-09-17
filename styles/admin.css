@@ -375,6 +375,20 @@ button { border: 0; cursor: pointer; }
   color: var(--champagne);
 }
 
+.order-status-form select {
+  border: 1px solid rgba(245, 240, 232, 0.15);
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: rgba(245, 240, 232, 0.05);
+  color: var(--paper);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-processing { background: rgba(201, 169, 110, 0.15); color: var(--champagne); }
+.status-shipped { background: rgba(120, 150, 200, 0.15); color: #8db4e8; }
+
 @media (max-width: 900px) {
   .stat-row {
     grid-template-columns: repeat(2, 1fr);
